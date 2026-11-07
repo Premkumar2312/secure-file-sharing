@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Download shared file · Secure Share</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="page-shell">
+    <header class="brand"><span class="brand-mark" aria-hidden="true">S</span><span>Secure Share</span></header>
+    <section class="card download-card">
+      <div class="icon-badge" aria-hidden="true">↓</div>
+      <p class="eyebrow">A FILE HAS BEEN SHARED WITH YOU</p>
+      <h1>Download your file</h1>
+      <p class="intro">Enter the decryption key provided by the person who shared this file.</p>
+      <div class="file-summary"><span class="file-summary-icon" aria-hidden="true">▤</span><span class="filename">{{ filename }}</span></div>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}<div class="messages">{% for category, message in messages %}<p class="message {{ category }}" role="alert">{{ message }}</p>{% endfor %}</div>{% endif %}
+      {% endwith %}
+      <form class="download-form" method="post">
+        <label for="key-input">Decryption key</label>
+        <input id="key-input" name="key" type="password" placeholder="Paste the key here" autocomplete="off" required>
+        <button class="button primary" type="submit">Decrypt and download <span aria-hidden="true">→</span></button>
+      </form>
+      <p class="privacy-note"><span aria-hidden="true">●</span> The file is decrypted securely for download.</p>
+    </section>
+    <footer>Secure file sharing · Fernet authenticated encryption</footer>
+  </main>
+</body>
+</html>
