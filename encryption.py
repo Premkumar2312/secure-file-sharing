@@ -1,5 +1,3 @@
-"""Small Fernet helpers for the Secure File Sharing System."""
-
 from cryptography.fernet import Fernet, InvalidToken
 
 
