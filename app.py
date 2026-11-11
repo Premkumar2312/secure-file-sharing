@@ -1,5 +1,3 @@
-"""Beginner-friendly encrypted file sharing with Flask and Fernet."""
-
 import json
 import os
 import re
